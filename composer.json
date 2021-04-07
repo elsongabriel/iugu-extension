@@ -1,0 +1,21 @@
+{
+    "name": "gabrieljperez/iugu-extension",
+    "description": "",
+    "type": "library",
+    "require": {
+        "bubbstore/iugu-php-sdk": "^1.0"
+    },
+    "license": "MIT",
+    "autoload": {
+		"psr-0": {
+			"gabrieljperez": "lib/"
+		}
+	},
+    "authors": [
+        {
+            "name": "Perez",
+            "email": "gabrieljesusperez@hotmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
