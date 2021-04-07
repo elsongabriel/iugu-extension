@@ -8,7 +8,7 @@
     "license": "MIT",
     "autoload": {
 		"psr-0": {
-			"gabrieljperez": "lib/"
+			"gabrieljperez/iugu-implements": "lib/"
 		}
 	},
     "authors": [
@@ -17,5 +17,5 @@
             "email": "gabrieljesusperez@hotmail.com"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
