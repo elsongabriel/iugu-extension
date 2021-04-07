@@ -1,9 +1,14 @@
 <?php
 
-namespace Iugu\Marketplace;
+namespace App\Iugu;
 
 use bubbstore\Iugu\Services\BaseRequest;
 
+/**
+ * Class Marketplace.
+ *
+ * @package namespace App\Iugu;
+ */
 class Marketplace extends BaseRequest
 {
     public function __construct($http, $iugu)
@@ -12,13 +17,13 @@ class Marketplace extends BaseRequest
     }
 
     /**
-     * Listar Contas
+     * Listar subcontas
      * 
      * Lista as contas de um marketplace ou parceiro de negócios
      *
      * @return void
      */
-    public function getMarketplaces()
+    public function list()
     {
         $this->sendApiRequest('GET', 'marketplace');
 

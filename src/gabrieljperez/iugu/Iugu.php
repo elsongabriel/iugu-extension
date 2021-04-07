@@ -1,25 +1,48 @@
 <?php
 
-namespace Iugu;
+namespace App\Iugu;
 
 use bubbstore\Iugu\Iugu as baseIugu;
 
-use Iugu\Marketplace\Marketplace;
+use App\Iugu\Marketplace;
+use App\Iugu\Master;
+use \App\Iugu\Split;
 
+/**
+ * Class Iugu.
+ *
+ * @package namespace App\Iugu;
+ */
 class Iugu extends baseIugu
 {
     /**
      * Marketplace
      *
-     * @var Iugu\Marketplace\MarketPlace
+     * @var \App\Iugu\MarketPlace
      */
     protected $Marketplace;
+
+    /**
+     * Master
+     * 
+     * @var \App\Iugu\Master
+     */
+    protected $Master;
+
+    /**
+     * Split
+     * 
+     * @var \App\Iugu\Split
+     */
+    protected $Split;
 
     public function __construct()
     {
         parent::__construct($this->_getApiKey());
 
         $this->Marketplace = new Marketplace($this->http, $this);
+        $this->Master = new Master($this->http, $this);
+        $this->Split = new Split($this->http, $this);
     }
 
     /**
@@ -51,10 +74,30 @@ class Iugu extends baseIugu
     /**
      * Marketplace
      * 
-     * @return Iugu\MarketPlace\Marketplace 
+     * @return App\Iugu\Marketplace 
      */
     public function marketplace()
     {
         return $this->Marketplace;
+    }
+
+    /**
+     * Master account settings
+     *
+     * @return App\Iugu\Master
+     */
+    public function master()
+    {
+        return $this->Master;
+    }
+
+    /**
+     * Split
+     *
+     * @return App\Iugu\Split
+     */
+    public function Split()
+    {
+        return $this->Split;
     }
 }
