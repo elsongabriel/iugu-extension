@@ -8,8 +8,8 @@
     },
     "license": "MIT",
     "autoload": {
-		"psr-0": {
-			"gabrieljperez": "src/"
+		"psr-4": {
+			"gabrieljperez\\": "src/"
 		}
 	},
     "authors": [
