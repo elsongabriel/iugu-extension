@@ -1,17 +1,17 @@
 <?php
 
-namespace Iugu;
+namespace gabrieljperez\Iugu\Iugu;
 
 use bubbstore\Iugu\Iugu as baseIugu;
 
-use Iugu\Marketplace;
-use Iugu\Master;
-use Iugu\Split;
+use gabrieljperez\Iugu\Marketplace;
+use gabrieljperez\Iugu\Master;
+use gabrieljperez\Iugu\Split;
 
 /**
  * Class Iugu.
  *
- * @package namespace Iugu;
+ * @package namespace gabrieljperez\Iugu;
  */
 class Iugu extends baseIugu
 {
