@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Iugu;
+namespace Iugu;
 
 use bubbstore\Iugu\Services\BaseRequest;
 
 /**
  * Class Report.
  *
- * @package namespace App\Iugu;
+ * @package namespace Iugu;
  */
 class Report extends BaseRequest
 {

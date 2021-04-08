@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Iugu;
+namespace Iugu;
 
 use bubbstore\Iugu\Services\BaseRequest;
 
 /**
  * Class Marketplace.
  *
- * @package namespace App\Iugu;
+ * @package namespace Iugu;
  */
 class Marketplace extends BaseRequest
 {
