@@ -1,6 +1,6 @@
 <?php
 
-namespace gabrieljperez\Iugu\Iugu;
+namespace gabrieljperez\Iugu;
 
 use bubbstore\Iugu\Iugu as baseIugu;
 
