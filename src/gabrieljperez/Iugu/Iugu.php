@@ -36,6 +36,13 @@ class Iugu extends baseIugu
      */
     protected $Split;
 
+    /**
+     * Report
+     * 
+     * @var \App\Iugu\Report
+     */
+    protected $Report;
+
     public function __construct()
     {
         parent::__construct($this->_getApiKey());
@@ -43,6 +50,7 @@ class Iugu extends baseIugu
         $this->Marketplace = new Marketplace($this->http, $this);
         $this->Master = new Master($this->http, $this);
         $this->Split = new Split($this->http, $this);
+        $this->Report = new Report($this->http, $this);
     }
 
     /**
@@ -99,5 +107,15 @@ class Iugu extends baseIugu
     public function Split()
     {
         return $this->Split;
+    }
+
+    /**
+     * Report
+     *
+     * @return App\Iugu\Report
+     */
+    public function Report()
+    {
+        return $this->Report;
     }
 }
