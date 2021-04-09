@@ -23,7 +23,7 @@ class Report extends BaseRequest
      */
     public function listWithdrawRequests()
     {
-        $this->sendApiRequest('GET', 'withdraw_requests ');
+        $this->sendApiRequest('GET', 'withdraw_requests');
 
         return $this->fetchResponse();
     }
