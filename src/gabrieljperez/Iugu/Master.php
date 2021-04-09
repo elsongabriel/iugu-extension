@@ -17,7 +17,7 @@ class Master extends BaseRequest
     }
 
     /**
-     * Post Bank
+     * createBankVerificantion
      * 
      * Envia dados para cadastrar ou alterar o domicílio 
      * bancário da conta que recebe saques e transferências.
@@ -25,7 +25,7 @@ class Master extends BaseRequest
      * @param  array $params 
      * @return void
      */
-    public function postBank(array $params)
+    public function createBankVerificantion(array $params)
     {
         $this->setParams($params)->sendApiRequest('POST', 'bank_verification');
 
@@ -33,13 +33,13 @@ class Master extends BaseRequest
     }
 
     /**
-     * getBank
+     * getBankVerificantion
      *
      * Consultar dados enviados para alterar domicílio bancário.
      *
      * @return array
      */
-    public function getBank()
+    public function showBankVerificantion()
     {
         $this->sendApiRequest('GET', 'bank_verification');
 
@@ -47,14 +47,14 @@ class Master extends BaseRequest
     }
 
     /**
-     * postCreditCardVerification
+     * requestCreditCardVerification
      *
      * Envia dados para verificação de cartão de crédito
      *
      * @param  array $params 
      * @return array
      */
-    public function postCreditCardVerification(array $params)
+    public function requestCreditCardVerification(array $params)
     {
         $params['document_legal'] = base64_encode($params['document_legal']);
         
@@ -67,13 +67,13 @@ class Master extends BaseRequest
     }
 
     /**
-     * getCreditCardVerification
+     * checkCreditCardVerification
      *
-     * Envia dados para verificação de cartão de crédito
+     * Consultar dados enviados para uso de cartão de crédito
      *
      * @return array
      */
-    public function getCreditCardVerification()
+    public function checkCreditCardVerification()
     {
         $this->sendApiRequest('GET', 'credit_card_verification');
 
@@ -115,7 +115,7 @@ class Master extends BaseRequest
      *
      * @return array
      */
-    public function ConsultManagement()
+    public function consultManagement()
     {
         $this->sendApiRequest('GET', 'dunning_steps');
 
