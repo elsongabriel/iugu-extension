@@ -43,9 +43,9 @@ class Iugu extends baseIugu
      */
     protected $Report;
 
-    public function __construct()
+    public function __construct($apiKey = null)
     {
-        parent::__construct($this->_getApiKey());
+        parent::__construct(($apiKey !== null) ? $apiKey : $this->_getApiKey());
 
         $this->Marketplace = new Marketplace($this->http, $this);
         $this->Master = new Master($this->http, $this);
