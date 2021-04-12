@@ -23,7 +23,7 @@ class Master extends BaseRequest
      * bancário da conta que recebe saques e transferências.
      *
      * @param  array $params 
-     * @return void
+     * @return array
      */
     public function createBankVerificantion(array $params)
     {
@@ -99,7 +99,7 @@ class Master extends BaseRequest
      *
      * @param  array $array 
      * @param  string $key 
-     * @return void
+     * @return string|null
      */
     private function _fileEnconde($array, $key)
     {

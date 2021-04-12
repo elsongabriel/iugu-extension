@@ -47,7 +47,7 @@ class Split extends BaseRequest
      * Consulta um splits da conta.
      *
      * @param  string $id
-     * @return void
+     * @return array
      */
     public function search($id)
     {

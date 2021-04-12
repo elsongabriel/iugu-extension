@@ -45,7 +45,7 @@ class Report extends BaseRequest
      * Retorna o extrato financeiro de uma conta.
      *
      * @param  array $params
-     * @return void
+     * @return array
      */
     public function financialStatement(array $params = [])
     {
@@ -58,7 +58,7 @@ class Report extends BaseRequest
      * Retorna o extrato de faturas de uma conta.
      *
      * @param  array $params
-     * @return void
+     * @return array
      */
     public function invoicesStatement(array $params = [])
     {
@@ -100,7 +100,7 @@ class Report extends BaseRequest
      * Buscar pagamento
      *
      * @param  string $id 
-     * @return void 
+     * @return array 
      */
     public function searchPayment($id)
     {

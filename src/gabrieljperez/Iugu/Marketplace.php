@@ -21,7 +21,7 @@ class Marketplace extends BaseRequest
      * 
      * Lista as contas de um marketplace ou parceiro de negócios
      *
-     * @return void
+     * @return array
      */
     public function list()
     {
