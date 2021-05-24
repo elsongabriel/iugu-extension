@@ -47,6 +47,13 @@ class Iugu extends baseIugu
         'Itaú', 'Bradesco', 'Caixa Econômica', 'Banco do Brasil', 'Santander', 'Banrisul', 'Sicredi', 'Sicoob', 'Inter', 'BRB', 'Via Credi', 'Neon', 'Votorantim', 'Nubank', 'Pagseguro', 'Banco Original', 'Safra', 'Modal', 'Banestes','Unicred','Money Plus','Mercantil do Brasil','JP Morgan','Gerencianet Pagamentos do Brasil', 'Banco C6', 'BS2', 'Banco Topazio', 'Uniprime', 'Stone', 'Banco Daycoval', 'Rendimento', 'Banco do Nordeste', 'Citibank', 'PJBank', 'Cooperativa Central de Credito Noroeste Brasileiro', 'Uniprime Norte do Paraná', 'Global SCM', 'Next', 'Cora', 'Mercado Pago', 'Banco da Amazonia', 'BNP Paribas Brasil', 'Juno','Cresol','BRL Trust DTVM','Banco Banese'
     ];
 
+    const PERSON_TYPE = [
+        'Pessoa Física', 'Pessoa Jurídica'
+    ];
+
+    const PERSON_TYPE_PHYSICAL = 'Pessoa Física';
+    const PERSON_TYPE_LEGAL    = 'Pessoa Jurídica';
+
     public function __construct($apiKey = null)
     {
         parent::__construct(($apiKey !== null) ? $apiKey : $this->_getApiKey());
