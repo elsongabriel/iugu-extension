@@ -43,6 +43,13 @@ class Iugu extends baseIugu
      */
     protected $Report;
 
+    /**
+     * Plan
+     * 
+     * @var \App\Iugu\Report
+     */
+    protected $Plan;
+
     const BANKS = [
         'Itaú', 'Bradesco', 'Caixa Econômica', 'Banco do Brasil', 'Santander', 'Banrisul', 'Sicredi', 'Sicoob', 'Inter', 'BRB', 'Via Credi', 'Neon', 'Votorantim', 'Nubank', 'Pagseguro', 'Banco Original', 'Safra', 'Modal', 'Banestes','Unicred','Money Plus','Mercantil do Brasil','JP Morgan','Gerencianet Pagamentos do Brasil', 'Banco C6', 'BS2', 'Banco Topazio', 'Uniprime', 'Stone', 'Banco Daycoval', 'Rendimento', 'Banco do Nordeste', 'Citibank', 'PJBank', 'Cooperativa Central de Credito Noroeste Brasileiro', 'Uniprime Norte do Paraná', 'Global SCM', 'Next', 'Cora', 'Mercado Pago', 'Banco da Amazonia', 'BNP Paribas Brasil', 'Juno','Cresol','BRL Trust DTVM','Banco Banese'
     ];
@@ -115,7 +122,7 @@ class Iugu extends baseIugu
      *
      * @return App\Iugu\Split
      */
-    public function Split()
+    public function split()
     {
         return $this->Split;
     }
@@ -125,8 +132,18 @@ class Iugu extends baseIugu
      *
      * @return App\Iugu\Report
      */
-    public function Report()
+    public function report()
     {
         return $this->Report;
+    }
+
+    /**
+     * Plan
+     *
+     * @return App\Iugu\Plan
+     */
+    public function plan()
+    {
+        return $this->Plan;
     }
 }
