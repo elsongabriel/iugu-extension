@@ -11,6 +11,13 @@ use bubbstore\Iugu\Services\BaseRequest;
  */
 class Plan extends BaseRequest
 {
+    
+    /**
+     * Plan constructor
+     *
+     * @param string $http
+     * @param string $iugu
+     */
     public function __construct($http, $iugu)
     {
         parent::__construct($http, $iugu);
