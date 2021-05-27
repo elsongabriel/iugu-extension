@@ -65,7 +65,7 @@ class Plan extends BaseRequest
      * @param  int   $id
      * @return array
      */
-    public function show($id)
+    public function get($id)
     {
         $this->sendApiRequest('GET', sprintf('plans/$s', $id));
 
