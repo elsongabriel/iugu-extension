@@ -4,10 +4,6 @@ namespace gabrieljperez\Iugu;
 
 use bubbstore\Iugu\Iugu as baseIugu;
 
-use gabrieljperez\Iugu\Marketplace;
-use gabrieljperez\Iugu\Master;
-use gabrieljperez\Iugu\Split;
-
 /**
  * Class Iugu.
  *
@@ -81,11 +77,12 @@ class Iugu extends baseIugu
     {
         parent::__construct(($apiKey !== null) ? $apiKey : $this->_getApiKey());
 
-        $this->Marketplace = new Marketplace($this->http, $this);
-        $this->Master      = new Master($this->http, $this);
-        $this->Split       = new Split($this->http, $this);
-        $this->Report      = new Report($this->http, $this);
-        $this->Plan        = new Plan($this->http, $this);
+        $this->Marketplace  = new Marketplace($this->http, $this);
+        $this->Master       = new Master($this->http, $this);
+        $this->Split        = new Split($this->http, $this);
+        $this->Report       = new Report($this->http, $this);
+        $this->Plan         = new Plan($this->http, $this);
+        $this->Subscription = new Subscription($this->http, $this);
     }
 
     /**
