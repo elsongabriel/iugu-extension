@@ -100,9 +100,10 @@ class Subscription extends BaseRequest
      * Simula a alteração de plano de uma assinatura.
      *
      * @param  string $id
+     * @param  string $plan_identifier
      * @return array
      */
-    public function changePlanSimulation($id)
+    public function changePlanSimulation($id, $plan_identifier)
     {
         $this->sendApiRequest('PUT', sprintf('subscriptions/$s/change_plan_simulation/$s', $id, $plan_identifier));
 
@@ -113,9 +114,10 @@ class Subscription extends BaseRequest
      * Simula a alteração de plano de uma assinatura.
      *
      * @param  string $id
+     * @param  string $plan_identifier
      * @return array
      */
-    public function changePlan($id)
+    public function changePlan($id, $plan_identifier)
     {
         $this->sendApiRequest('PUT', sprintf('subscriptions/$s/change_plan/$s', $id, $plan_identifier));
 
