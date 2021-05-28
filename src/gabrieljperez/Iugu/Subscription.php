@@ -88,7 +88,7 @@ class Subscription extends BaseRequest
      * @param  string $id
      * @return array
      */
-    public function suspend($id)
+    public function update($id)
     {
         $this->setParams($params)->sendApiRequest('PUT', sprintf('subscriptions/$s', $id));
 
