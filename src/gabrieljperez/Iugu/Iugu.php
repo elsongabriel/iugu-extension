@@ -64,7 +64,7 @@ class Iugu extends baseIugu
     const INTERVAL_TYPES            = [ 
         'weeks', 'months'
     ];
-    
+
     const INTERVAL_TYPE_WEEKS      = 'weeks';
     const INTERVAL_TYPE_MONTHS     = 'months';
 
@@ -82,9 +82,10 @@ class Iugu extends baseIugu
         parent::__construct(($apiKey !== null) ? $apiKey : $this->_getApiKey());
 
         $this->Marketplace = new Marketplace($this->http, $this);
-        $this->Master = new Master($this->http, $this);
-        $this->Split = new Split($this->http, $this);
-        $this->Report = new Report($this->http, $this);
+        $this->Master      = new Master($this->http, $this);
+        $this->Split       = new Split($this->http, $this);
+        $this->Report      = new Report($this->http, $this);
+        $this->Plan        = new Plan($this->http, $this);
     }
 
     /**
