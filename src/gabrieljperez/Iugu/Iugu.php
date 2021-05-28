@@ -89,7 +89,7 @@ class Iugu extends baseIugu
 
     public function __construct($apiKey = null)
     {
-        parent::__construct(($apiKey !== null) ? $apiKey : $this->_getApiKey());
+        parent::__construct(($apiKey !== null) ? $apiKey : $this->getApiKey());
 
         $this->Marketplace  = new Marketplace($this->http, $this);
         $this->Master       = new Master($this->http, $this);
@@ -105,7 +105,7 @@ class Iugu extends baseIugu
      * 
      * @return string
      */
-    private function _getApiKey()
+    public function getApiKey()
     {
         if (config('app.debug')) {
             $key = config('services.iugu.api_test_key');
