@@ -86,9 +86,10 @@ class Subscription extends BaseRequest
      * Altera os dados de uma Assinatura, quaisquer parâmetros não informados não serão alterados.
      *
      * @param  string $id
+     * @param  array $params
      * @return array
      */
-    public function update($id)
+    public function update($id, array $params)
     {
         $this->setParams($params)->sendApiRequest('PUT', sprintf('subscriptions/$s', $id));
 
