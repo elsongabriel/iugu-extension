@@ -51,7 +51,7 @@ class Subscription extends BaseRequest
      */
     public function search($id)
     {
-        $this->sendApiRequest('GET', sprintf('subscriptions/$s', $id));
+        $this->sendApiRequest('GET', "subscriptions/{$id}");
 
         return $this->fetchResponse();
     }
@@ -64,7 +64,7 @@ class Subscription extends BaseRequest
      */
     public function activate($id)
     {
-        $this->sendApiRequest('POST', sprintf('subscriptions/$s/activate', $id));
+        $this->sendApiRequest('POST', "subscriptions/{$id}/activate");
 
         return $this->fetchResponse();
     }
@@ -77,7 +77,7 @@ class Subscription extends BaseRequest
      */
     public function suspend($id)
     {
-        $this->sendApiRequest('POST', sprintf('subscriptions/$s/suspend', $id));
+        $this->sendApiRequest('POST', "subscriptions/{$id}/suspend");
 
         return $this->fetchResponse();
     }
@@ -91,7 +91,7 @@ class Subscription extends BaseRequest
      */
     public function update($id, array $params)
     {
-        $this->setParams($params)->sendApiRequest('PUT', sprintf('subscriptions/$s', $id));
+        $this->setParams($params)->sendApiRequest('PUT', "subscriptions/{$id}");
 
         return $this->fetchResponse();
     }
@@ -105,7 +105,7 @@ class Subscription extends BaseRequest
      */
     public function changePlanSimulation($id, $plan_identifier)
     {
-        $this->sendApiRequest('PUT', sprintf('subscriptions/$s/change_plan_simulation/$s', $id, $plan_identifier));
+        $this->sendApiRequest('PUT', "subscriptions/{$id}/change_plan_simulation/{$plan_identifier}");
 
         return $this->fetchResponse();
     }
@@ -119,7 +119,7 @@ class Subscription extends BaseRequest
      */
     public function changePlan($id, $plan_identifier)
     {
-        $this->sendApiRequest('PUT', sprintf('subscriptions/$s/change_plan/$s', $id, $plan_identifier));
+        $this->sendApiRequest('PUT', "subscriptions/{$id}/change_plan/{$plan_identifier}");
 
         return $this->fetchResponse();
     }
@@ -132,7 +132,7 @@ class Subscription extends BaseRequest
      */
     public function removeSubscription($id)
     {
-        $this->sendApiRequest('DELETE', sprintf('subscriptions/$s', $id));
+        $this->sendApiRequest('DELETE', "subscriptions/{$id}");
 
         return $this->fetchResponse();
     }
