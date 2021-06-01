@@ -1,21 +1,22 @@
 <?php
 
-namespace services\Iugu;
+namespace IuguServices\Iugu;
 
 use bubbstore\Iugu\Iugu;
 use bubbstore\Iugu\Services\BaseRequest;
 use GuzzleHttp\ClientInterface;
 
 /**
- * Class Marketplace.
+ * Class Plan.
  *
  * @package namespace services\Iugu;
  */
-class Marketplace extends BaseRequest
+class Plan extends BaseRequest
 {
-
+    
     /**
-     * Marketplace constructor.
+     * Plan constructor
+     *
      * @param ClientInterface $http
      * @param Iugu $iugu
      */
@@ -25,9 +26,9 @@ class Marketplace extends BaseRequest
     }
 
     /**
-     * Listar subcontas
-     *
-     * Lista as contas de um marketplace ou parceiro de negócios
+     * Retorna uma lista com todos os planos em sua conta ordenadas pela data de Criação,
+     * sendo o primeiro o criado mais recentemente. O campo totalItems contém sempre a quantidade de planos cadastrados,
+     * independente dos parâmetros de pesquisa utilizados e o resultado da pesquisa fica sempre dentro de items.
      *
      * @return array
      * @throws \bubbstore\Iugu\Exceptions\IuguException
@@ -35,15 +36,13 @@ class Marketplace extends BaseRequest
      */
     public function list()
     {
-        $this->sendApiRequest('GET', 'marketplace');
+        $this->sendApiRequest('GET', 'plans');
 
         return $this->fetchResponse();
     }
 
     /**
-     * create
-     *
-     * Cria um novo marketplace.
+     * Cria um plano.
      *
      * @param array $params
      * @return array
@@ -52,15 +51,15 @@ class Marketplace extends BaseRequest
      */
     public function create(array $params)
     {
-        $this->setParams($params)->sendApiRequest('POST', 'marketplace/create_account');
+        $this->setParams($params)->sendApiRequest('POST', 'plans');
 
         return $this->fetchResponse();
     }
 
     /**
-     * Update
-     *
-     * Atualiza uma subconta.
+     * Altera os dados de um Plano,
+     * quaisquer parâmetros não informados não serão alterados.
+     * As alterações não irão mudar as Assinaturas que já utilizam o Plano, mas só as novas.
      *
      * @param int $id
      * @param array $params
@@ -70,59 +69,54 @@ class Marketplace extends BaseRequest
      */
     public function update($id, array $params)
     {
-        $this->setParams($params)->sendApiRequest('PUT', sprintf('accounts/$s', $id));
+        $this->setParams($params)->sendApiRequest('PUT', sprintf('plans/$s', $id));
 
         return $this->fetchResponse();
     }
 
     /**
-     * Envia uma verificação de subconta
-     *
-     * @param int $id
-     * @param array $params
-     * @return array
-     * @throws \bubbstore\Iugu\Exceptions\IuguException
-     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
-     */
-    public function requestVerification($id, array $params)
-    {
-        $this->setParams($params)->sendApiRequest('POST', sprintf('accounts/%s/request_verification', $id));
-
-        return $this->fetchResponse();
-    }
-
-    /**
-     * Show
-     *
-     * Retorna os dados da subconta
+     * Retorna os dados de um Plano.
      *
      * @param int $id
      * @return array
      * @throws \bubbstore\Iugu\Exceptions\IuguException
      * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
-    public function show($id)
+    public function get($id)
     {
-        $this->sendApiRequest('GET', sprintf('accounts/%s', $id));
+        $this->sendApiRequest('GET', sprintf('plans/$s', $id));
 
         return $this->fetchResponse();
     }
 
     /**
-     * requestWithdraw
+     * Retorna os dados de um Plano.
      *
-     * Faz um pedido de Saque de um valor.
-     *
-     * @param int $id
-     * @param array $params
+     * @param int $identifier
      * @return array
      * @throws \bubbstore\Iugu\Exceptions\IuguException
      * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
-    public function requestWithdraw($id, array $params)
+    public function getByIdentifier($identifier)
     {
-        $this->sendApiRequest('POST', sprintf('accounts/%s/request_withdraw', $id));
+        $this->sendApiRequest('GET', sprintf('plans/identifier/$s', $identifier));
 
         return $this->fetchResponse();
     }
+
+    /**
+     * Remove os dados de um Plano
+     *
+     * @param int $id
+     * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
+     */
+    public function destroy($id)
+    {
+        $this->sendApiRequest('DELETE', sprintf('plans/$s', $id));
+
+        return $this->fetchResponse();
+    }
+
 }
