@@ -1,23 +1,36 @@
 {
   "name": "egcservices/iugu-extension",
-  "description": "",
   "type": "library",
+  "description": "Extensão do IUGU. Criada por Gabriel Perez. Atualizada por Elson Costa.",
+  "keywords": [
+    "iugu",
+    "extension",
+    "inboud",
+    "payment",
+    "php",
+    "php8.0"
+  ],
   "require": {
     "php": "^7.4|^8.0",
     "guzzlehttp/guzzle": "^7.3",
-    "ext-json": "*",
-    "egcservices/iugu-php-sdk": "^2.0"
+    "egcservices/iugu-php-sdk": "^2.0",
+    "ext-json": "*"
   },
-  "license": "MIT",
   "autoload": {
     "psr-0": {
-      "gabrieljperez": "src/"
+      "egcservices": "src/"
     }
   },
+  "license": "MIT",
   "authors": [
     {
+      "name": "Perez",
+      "email": "gabrieljesusperez@hotmail.com"
+    },
+    {
       "name": "Elson Costa",
-      "email": "elsongabriel@hotmail.com"
+      "email": "elsongabriel@hotmail.com",
+      "homepage": "https://egcservices.com.br"
     }
   ],
   "minimum-stability": "dev"
