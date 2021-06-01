@@ -1,6 +1,6 @@
 <?php
 
-namespace IuguServices\Iugu;
+namespace iuguservice;
 
 use bubbstore\Iugu\Iugu as baseIugu;
 
@@ -14,49 +14,49 @@ class Iugu extends baseIugu
     /**
      * Marketplace
      *
-     * @var \services\Iugu\MarketPlace
+     * @var MarketPlace
      */
     protected $Marketplace;
 
     /**
      * Master
      *
-     * @var \services\Iugu\Master
+     * @var Master
      */
     protected $Master;
 
     /**
      * Split
      *
-     * @var \services\Iugu\Split
+     * @var Split
      */
     protected $Split;
 
     /**
      * Report
      *
-     * @var \services\Iugu\Report
+     * @var Report
      */
     protected $Report;
 
     /**
      * Plan
      *
-     * @var \services\Iugu\Plan
+     * @var Plan
      */
     protected $Plan;
 
     /**
      * Subscription
      *
-     * @var \services\Iugu\Subscription
+     * @var Subscription
      */
     protected $Subscription;
 
     /**
      * Customer
      *
-     * @var \services\Iugu\Customer
+     * @var Customer
      */
     protected $Customer;
 
@@ -69,28 +69,32 @@ class Iugu extends baseIugu
     ];
 
     const PERSON_TYPE_PHYSICAL = 'Pessoa Física';
-    const PERSON_TYPE_LEGAL = 'Pessoa Jurídica';
+    const PERSON_TYPE_LEGAL    = 'Pessoa Jurídica';
 
     const INTERVAL_TYPES = [
         'weeks', 'months'
     ];
 
-    const INTERVAL_TYPE_WEEKS = 'weeks';
+    const INTERVAL_TYPE_WEEKS  = 'weeks';
     const INTERVAL_TYPE_MONTHS = 'months';
 
     const PAYABLE_WITHS = [
         'all', 'credit_card', 'bank_slip', 'pix'
     ];
 
-    const PAYABLE_WITH_ALL = 'all';
+    const PAYABLE_WITH_ALL         = 'all';
     const PAYABLE_WITH_CREDIT_CARD = 'credit_card';
-    const PAYABLE_WITH_BANK_SLIP = 'bank_slip';
-    const PAYABLE_WITH_PIX = 'pix';
+    const PAYABLE_WITH_BANK_SLIP   = 'bank_slip';
+    const PAYABLE_WITH_PIX         = 'pix';
 
+    /**
+     * Iugu constructor.
+     * @param null $apiKey
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     */
     public function __construct($apiKey = null)
     {
         parent::__construct(($apiKey !== null) ? $apiKey : $this->getApiKey());
-
         $this->Marketplace  = new Marketplace($this->http, $this);
         $this->Master       = new Master($this->http, $this);
         $this->Split        = new Split($this->http, $this);
@@ -129,7 +133,7 @@ class Iugu extends baseIugu
     /**
      * Marketplace
      *
-     * @return \services\Iugu\Marketplace
+     * @return Marketplace
      */
     public function marketplace()
     {
@@ -139,7 +143,7 @@ class Iugu extends baseIugu
     /**
      * Master account settings
      *
-     * @return \services\Iugu\Master
+     * @return Master
      */
     public function master()
     {
@@ -149,7 +153,7 @@ class Iugu extends baseIugu
     /**
      * Split
      *
-     * @return \services\Iugu\Split
+     * @return Split
      */
     public function split()
     {
@@ -159,7 +163,7 @@ class Iugu extends baseIugu
     /**
      * Report
      *
-     * @return \services\Iugu\Report
+     * @return Report
      */
     public function report()
     {
@@ -169,7 +173,7 @@ class Iugu extends baseIugu
     /**
      * Plan
      *
-     * @return \services\Iugu\Plan
+     * @return Plan
      */
     public function plan()
     {
@@ -179,7 +183,7 @@ class Iugu extends baseIugu
     /**
      * Subscription
      *
-     * @return \services\Iugu\Subscription
+     * @return Subscription
      */
     public function subscription()
     {
@@ -189,7 +193,7 @@ class Iugu extends baseIugu
     /**
      * Customer
      *
-     * @return \services\Iugu\Customer
+     * @return Customer
      */
     public function customer()
     {

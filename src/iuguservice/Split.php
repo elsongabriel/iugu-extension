@@ -1,6 +1,6 @@
 <?php
 
-namespace IuguServices\Iugu;
+namespace iuguservice;
 
 use bubbstore\Iugu\Iugu;
 use bubbstore\Iugu\Services\BaseRequest;
