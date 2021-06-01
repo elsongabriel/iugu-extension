@@ -1,29 +1,39 @@
 <?php
 
-namespace gabrieljperez\Iugu;
+namespace services\Iugu;
 
+use bubbstore\Iugu\Iugu;
 use bubbstore\Iugu\Services\BaseRequest;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Class Master.
  *
- * @package namespace gabrieljperez\Iugu;
+ * @package namespace services\Iugu;
  */
 class Master extends BaseRequest
 {
-    public function __construct($http, $iugu)
+
+    /**
+     * Master constructor.
+     * @param ClientInterface $http
+     * @param Iugu $iugu
+     */
+    public function __construct(ClientInterface $http, Iugu $iugu)
     {
         parent::__construct($http, $iugu);
     }
 
     /**
      * createBankVerificantion
-     * 
-     * Envia dados para cadastrar ou alterar o domicílio 
+     *
+     * Envia dados para cadastrar ou alterar o domicílio
      * bancário da conta que recebe saques e transferências.
      *
-     * @param  array $params 
+     * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function createBankVerificantion(array $params)
     {
@@ -38,6 +48,8 @@ class Master extends BaseRequest
      * Consultar dados enviados para alterar domicílio bancário.
      *
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function showBankVerificantion()
     {
@@ -51,13 +63,15 @@ class Master extends BaseRequest
      *
      * Envia dados para verificação de cartão de crédito
      *
-     * @param  array $params 
+     * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function requestCreditCardVerification(array $params)
     {
         $params['document_legal'] = base64_encode($params['document_legal']);
-        
+
         $params['document_individual_cnh'] = $this->_fileEnconde($params, 'document_individual_cnh');
         $params['document_individual_cpf'] = $this->_fileEnconde($params, 'document_individual_cpf');
 
@@ -72,6 +86,8 @@ class Master extends BaseRequest
      * Consultar dados enviados para uso de cartão de crédito
      *
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function checkCreditCardVerification()
     {
@@ -84,8 +100,10 @@ class Master extends BaseRequest
      * Configuração dos pagamentos pix.
      * Habilitar/Desabilitar
      *
-     * @param bool $enable 
+     * @param bool $enable
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function settingPix(bool $enable)
     {
@@ -97,13 +115,13 @@ class Master extends BaseRequest
     /**
      * Encode file for base64
      *
-     * @param  array $array 
-     * @param  string $key 
+     * @param array $array
+     * @param string $key
      * @return string|null
      */
     private function _fileEnconde($array, $key)
     {
-        if(isset($array[$key])) {
+        if (isset($array[$key])) {
             return base64_encode($array[$key]);
         } else {
             return null;
@@ -114,6 +132,8 @@ class Master extends BaseRequest
      * Retorna configuração atual da gestão de cobranças.
      *
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function consultManagement()
     {
@@ -125,8 +145,10 @@ class Master extends BaseRequest
     /**
      * Alterar a configuração da gestão de cobranças.
      *
-     * @param  array $params
+     * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function updateManagement(array $params)
     {

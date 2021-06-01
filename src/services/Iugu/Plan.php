@@ -1,13 +1,15 @@
 <?php
 
-namespace gabrieljperez\Iugu;
+namespace services\Iugu;
 
+use bubbstore\Iugu\Iugu;
 use bubbstore\Iugu\Services\BaseRequest;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Class Plan.
  *
- * @package namespace gabrieljperez\Iugu;
+ * @package namespace services\Iugu;
  */
 class Plan extends BaseRequest
 {
@@ -15,20 +17,22 @@ class Plan extends BaseRequest
     /**
      * Plan constructor
      *
-     * @param string $http
-     * @param string $iugu
+     * @param ClientInterface $http
+     * @param Iugu $iugu
      */
-    public function __construct($http, $iugu)
+    public function __construct(ClientInterface $http, Iugu $iugu)
     {
         parent::__construct($http, $iugu);
     }
 
     /**
-     * Retorna uma lista com todos os planos em sua conta ordenadas pela data de Criação, 
+     * Retorna uma lista com todos os planos em sua conta ordenadas pela data de Criação,
      * sendo o primeiro o criado mais recentemente. O campo totalItems contém sempre a quantidade de planos cadastrados,
      * independente dos parâmetros de pesquisa utilizados e o resultado da pesquisa fica sempre dentro de items.
      *
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function list()
     {
@@ -40,8 +44,10 @@ class Plan extends BaseRequest
     /**
      * Cria um plano.
      *
-     * @param array $params 
-     * @return array 
+     * @param array $params
+     * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function create(array $params)
     {
@@ -51,13 +57,15 @@ class Plan extends BaseRequest
     }
 
     /**
-     * Altera os dados de um Plano, 
-     * quaisquer parâmetros não informados não serão alterados. 
+     * Altera os dados de um Plano,
+     * quaisquer parâmetros não informados não serão alterados.
      * As alterações não irão mudar as Assinaturas que já utilizam o Plano, mas só as novas.
      *
-     * @param  int   $id
-     * @param  array $params
+     * @param int $id
+     * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function update($id, array $params)
     {
@@ -69,8 +77,10 @@ class Plan extends BaseRequest
     /**
      * Retorna os dados de um Plano.
      *
-     * @param  int   $id
+     * @param int $id
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function get($id)
     {
@@ -78,12 +88,14 @@ class Plan extends BaseRequest
 
         return $this->fetchResponse();
     }
-    
+
     /**
      * Retorna os dados de um Plano.
      *
-     * @param  int   $identifier
+     * @param int $identifier
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function getByIdentifier($identifier)
     {
@@ -95,8 +107,10 @@ class Plan extends BaseRequest
     /**
      * Remove os dados de um Plano
      *
-     * @param  int   $id
+     * @param int $id
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function destroy($id)
     {

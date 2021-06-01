@@ -1,17 +1,25 @@
 <?php
 
-namespace gabrieljperez\Iugu;
+namespace services\Iugu;
 
+use bubbstore\Iugu\Iugu;
 use bubbstore\Iugu\Services\BaseRequest;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Class Report.
  *
- * @package namespace gabrieljperez\Iugu;
+ * @package namespace services\Iugu;
  */
 class Report extends BaseRequest
 {
-    public function __construct($http, $iugu)
+
+    /**
+     * Report constructor.
+     * @param ClientInterface $http
+     * @param Iugu $iugu
+     */
+    public function __construct(ClientInterface $http, Iugu $iugu)
     {
         parent::__construct($http, $iugu);
     }
@@ -20,6 +28,8 @@ class Report extends BaseRequest
      * Retorna a lista de todas as transferências bancárias.
      *
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function listWithdrawRequests()
     {
@@ -31,8 +41,10 @@ class Report extends BaseRequest
     /**
      * Retorna as informações de uma transferência bancária.
      *
-     * @param  int $id
+     * @param int $id
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function getWithdrawRequests($id)
     {
@@ -44,8 +56,10 @@ class Report extends BaseRequest
     /**
      * Retorna o extrato financeiro de uma conta.
      *
-     * @param  array $params
+     * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function financialStatement(array $params = [])
     {
@@ -57,8 +71,10 @@ class Report extends BaseRequest
     /**
      * Retorna o extrato de faturas de uma conta.
      *
-     * @param  array $params
+     * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function invoicesStatement(array $params = [])
     {
@@ -68,14 +84,16 @@ class Report extends BaseRequest
     }
 
     /**
-     * Retorna todos os pedidos de saques criados em ambiente de produção (LIVE) 
+     * Retorna todos os pedidos de saques criados em ambiente de produção (LIVE)
      * que tenham um determinado status e tenham sido atualizados em determinado período (entre frome to).
-     * No caso de marketplaces ou parceiros de negócios, 
+     * No caso de marketplaces ou parceiros de negócios,
      * retorna também os pedidos de saques de subcontas que atendam a esses critérios.
      *
-     * @param  int  $start 
-     * @param  int  $limit 
-     * @return array 
+     * @param int $start
+     * @param int $limit
+     * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function withdrawConciliations($start, $limit)
     {
@@ -88,6 +106,8 @@ class Report extends BaseRequest
      * Listar pagamentos
      *
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function paymentRequests()
     {
@@ -99,8 +119,10 @@ class Report extends BaseRequest
     /**
      * Buscar pagamento
      *
-     * @param  string $id 
-     * @return array 
+     * @param string $id
+     * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function searchPayment($id)
     {

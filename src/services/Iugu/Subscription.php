@@ -1,17 +1,25 @@
 <?php
 
-namespace gabrieljperez\Iugu;
+namespace services\Iugu;
 
+use bubbstore\Iugu\Iugu;
 use bubbstore\Iugu\Services\BaseRequest;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Class Subscription.
  *
- * @package namespace gabrieljperez\Iugu;
+ * @package namespace services\Iugu;
  */
 class Subscription extends BaseRequest
 {
-    public function __construct($http, $iugu)
+
+    /**
+     * Subscription constructor.
+     * @param ClientInterface $http
+     * @param Iugu $iugu
+     */
+    public function __construct(ClientInterface $http, Iugu $iugu)
     {
         parent::__construct($http, $iugu);
     }
@@ -19,8 +27,10 @@ class Subscription extends BaseRequest
     /**
      * Cria uma Assinatura
      *
-     * @param  array $params 
-     * @return array 
+     * @param array $params
+     * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function create(array $params)
     {
@@ -30,11 +40,13 @@ class Subscription extends BaseRequest
     }
 
     /**
-     * Retorna uma lista com as assinaturas geradas pela sua conta, ordenadas pela data de criação, da mais nova para a mais antiga. 
+     * Retorna uma lista com as assinaturas geradas pela sua conta, ordenadas pela data de criação, da mais nova para a mais antiga.
      * O nó totalItems retorna sempre a quantidade total de assinaturas cadastradas, independentemente dos parâmetros de pesquisa utilizados,
      * e o resultado da pesquisa fica sempre dentro de items. Por padrão, retorna no máximo 100 itens.
      *
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function list()
     {
@@ -46,8 +58,10 @@ class Subscription extends BaseRequest
     /**
      * Retorna os dados de uma Assinatura.
      *
-     * @param  string $id
+     * @param string $id
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function search($id)
     {
@@ -59,8 +73,10 @@ class Subscription extends BaseRequest
     /**
      * Ativa uma Assinatura. Uma Fatura poderá ser gerada para o cliente.
      *
-     * @param  string $id
+     * @param string $id
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function activate($id)
     {
@@ -72,8 +88,10 @@ class Subscription extends BaseRequest
     /**
      * Suspende uma Assinatura.
      *
-     * @param  string $id
+     * @param string $id
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function suspend($id)
     {
@@ -85,9 +103,11 @@ class Subscription extends BaseRequest
     /**
      * Altera os dados de uma Assinatura, quaisquer parâmetros não informados não serão alterados.
      *
-     * @param  string $id
-     * @param  array $params
+     * @param string $id
+     * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function update($id, array $params)
     {
@@ -99,9 +119,11 @@ class Subscription extends BaseRequest
     /**
      * Simula a alteração de plano de uma assinatura.
      *
-     * @param  string $id
-     * @param  string $plan_identifier
+     * @param string $id
+     * @param string $plan_identifier
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function changePlanSimulation($id, $plan_identifier)
     {
@@ -113,9 +135,11 @@ class Subscription extends BaseRequest
     /**
      * Simula a alteração de plano de uma assinatura.
      *
-     * @param  string $id
-     * @param  string $plan_identifier
+     * @param string $id
+     * @param string $plan_identifier
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function changePlan($id, $plan_identifier)
     {
@@ -127,8 +151,10 @@ class Subscription extends BaseRequest
     /**
      * Remove uma Assinatura permanentemente.
      *
-     * @param  string $id
+     * @param string $id
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function removeSubscription($id)
     {

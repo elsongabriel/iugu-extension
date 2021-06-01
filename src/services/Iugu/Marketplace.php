@@ -1,27 +1,37 @@
 <?php
 
-namespace gabrieljperez\Iugu;
+namespace services\Iugu;
 
+use bubbstore\Iugu\Iugu;
 use bubbstore\Iugu\Services\BaseRequest;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Class Marketplace.
  *
- * @package namespace gabrieljperez\Iugu;
+ * @package namespace services\Iugu;
  */
 class Marketplace extends BaseRequest
 {
-    public function __construct($http, $iugu)
+
+    /**
+     * Marketplace constructor.
+     * @param ClientInterface $http
+     * @param Iugu $iugu
+     */
+    public function __construct(ClientInterface $http, Iugu $iugu)
     {
         parent::__construct($http, $iugu);
     }
 
     /**
      * Listar subcontas
-     * 
+     *
      * Lista as contas de um marketplace ou parceiro de negócios
      *
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function list()
     {
@@ -37,6 +47,8 @@ class Marketplace extends BaseRequest
      *
      * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function create(array $params)
     {
@@ -50,9 +62,11 @@ class Marketplace extends BaseRequest
      *
      * Atualiza uma subconta.
      *
-     * @param  int $id
-     * @param  array $params 
+     * @param int $id
+     * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function update($id, array $params)
     {
@@ -64,9 +78,11 @@ class Marketplace extends BaseRequest
     /**
      * Envia uma verificação de subconta
      *
-     * @param  int $id
-     * @param  array $params 
+     * @param int $id
+     * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function requestVerification($id, array $params)
     {
@@ -80,8 +96,10 @@ class Marketplace extends BaseRequest
      *
      * Retorna os dados da subconta
      *
-     * @param  int $id
+     * @param int $id
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function show($id)
     {
@@ -95,9 +113,11 @@ class Marketplace extends BaseRequest
      *
      * Faz um pedido de Saque de um valor.
      *
-     * @param  int $id 
-     * @param  array $params 
+     * @param int $id
+     * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function requestWithdraw($id, array $params)
     {

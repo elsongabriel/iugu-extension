@@ -1,91 +1,91 @@
 <?php
 
-namespace gabrieljperez\Iugu;
+namespace services\Iugu;
 
 use bubbstore\Iugu\Iugu as baseIugu;
 
 /**
  * Class Iugu.
  *
- * @package namespace gabrieljperez\Iugu;
+ * @package namespace services\Iugu;
  */
 class Iugu extends baseIugu
 {
     /**
      * Marketplace
      *
-     * @var \App\Iugu\MarketPlace
+     * @var \services\Iugu\MarketPlace
      */
     protected $Marketplace;
 
     /**
      * Master
-     * 
-     * @var \App\Iugu\Master
+     *
+     * @var \services\Iugu\Master
      */
     protected $Master;
 
     /**
      * Split
-     * 
-     * @var \App\Iugu\Split
+     *
+     * @var \services\Iugu\Split
      */
     protected $Split;
 
     /**
      * Report
-     * 
-     * @var \App\Iugu\Report
+     *
+     * @var \services\Iugu\Report
      */
     protected $Report;
 
     /**
      * Plan
-     * 
-     * @var \App\Iugu\Plan
+     *
+     * @var \services\Iugu\Plan
      */
     protected $Plan;
 
     /**
      * Subscription
-     * 
-     * @var \App\Iugu\Subscription
+     *
+     * @var \services\Iugu\Subscription
      */
     protected $Subscription;
 
     /**
      * Customer
-     * 
-     * @var \App\Iugu\Customer
+     *
+     * @var \services\Iugu\Customer
      */
     protected $Customer;
 
-    const BANKS                     = [
-        'Itaú', 'Bradesco', 'Caixa Econômica', 'Banco do Brasil', 'Santander', 'Banrisul', 'Sicredi', 'Sicoob', 'Inter', 'BRB', 'Via Credi', 'Neon', 'Votorantim', 'Nubank', 'Pagseguro', 'Banco Original', 'Safra', 'Modal', 'Banestes','Unicred','Money Plus','Mercantil do Brasil','JP Morgan','Gerencianet Pagamentos do Brasil', 'Banco C6', 'BS2', 'Banco Topazio', 'Uniprime', 'Stone', 'Banco Daycoval', 'Rendimento', 'Banco do Nordeste', 'Citibank', 'PJBank', 'Cooperativa Central de Credito Noroeste Brasileiro', 'Uniprime Norte do Paraná', 'Global SCM', 'Next', 'Cora', 'Mercado Pago', 'Banco da Amazonia', 'BNP Paribas Brasil', 'Juno','Cresol','BRL Trust DTVM','Banco Banese'
+    const BANKS = [
+        'Itaú', 'Bradesco', 'Caixa Econômica', 'Banco do Brasil', 'Santander', 'Banrisul', 'Sicredi', 'Sicoob', 'Inter', 'BRB', 'Via Credi', 'Neon', 'Votorantim', 'Nubank', 'Pagseguro', 'Banco Original', 'Safra', 'Modal', 'Banestes', 'Unicred', 'Money Plus', 'Mercantil do Brasil', 'JP Morgan', 'Gerencianet Pagamentos do Brasil', 'Banco C6', 'BS2', 'Banco Topazio', 'Uniprime', 'Stone', 'Banco Daycoval', 'Rendimento', 'Banco do Nordeste', 'Citibank', 'PJBank', 'Cooperativa Central de Credito Noroeste Brasileiro', 'Uniprime Norte do Paraná', 'Global SCM', 'Next', 'Cora', 'Mercado Pago', 'Banco da Amazonia', 'BNP Paribas Brasil', 'Juno', 'Cresol', 'BRL Trust DTVM', 'Banco Banese'
     ];
 
-    const PERSON_TYPES              = [
+    const PERSON_TYPES = [
         'Pessoa Física', 'Pessoa Jurídica'
     ];
 
-    const PERSON_TYPE_PHYSICAL      = 'Pessoa Física';
-    const PERSON_TYPE_LEGAL         = 'Pessoa Jurídica';
+    const PERSON_TYPE_PHYSICAL = 'Pessoa Física';
+    const PERSON_TYPE_LEGAL = 'Pessoa Jurídica';
 
-    const INTERVAL_TYPES            = [ 
+    const INTERVAL_TYPES = [
         'weeks', 'months'
     ];
 
-    const INTERVAL_TYPE_WEEKS      = 'weeks';
-    const INTERVAL_TYPE_MONTHS     = 'months';
+    const INTERVAL_TYPE_WEEKS = 'weeks';
+    const INTERVAL_TYPE_MONTHS = 'months';
 
-    const PAYABLE_WITHS            = [
+    const PAYABLE_WITHS = [
         'all', 'credit_card', 'bank_slip', 'pix'
     ];
 
-    const PAYABLE_WITH_ALL         = 'all';
+    const PAYABLE_WITH_ALL = 'all';
     const PAYABLE_WITH_CREDIT_CARD = 'credit_card';
-    const PAYABLE_WITH_BANK_SLIP   = 'bank_slip';
-    const PAYABLE_WITH_PIX         = 'pix';
+    const PAYABLE_WITH_BANK_SLIP = 'bank_slip';
+    const PAYABLE_WITH_PIX = 'pix';
 
     public function __construct($apiKey = null)
     {
@@ -102,7 +102,7 @@ class Iugu extends baseIugu
 
     /**
      * Get api key
-     * 
+     *
      * @return string
      */
     public function getApiKey()
@@ -118,7 +118,7 @@ class Iugu extends baseIugu
 
     /**
      * Get account Id
-     * 
+     *
      * @return string
      */
     public function getAccountId()
@@ -128,8 +128,8 @@ class Iugu extends baseIugu
 
     /**
      * Marketplace
-     * 
-     * @return App\Iugu\Marketplace 
+     *
+     * @return \services\Iugu\Marketplace
      */
     public function marketplace()
     {
@@ -139,7 +139,7 @@ class Iugu extends baseIugu
     /**
      * Master account settings
      *
-     * @return App\Iugu\Master
+     * @return \services\Iugu\Master
      */
     public function master()
     {
@@ -149,7 +149,7 @@ class Iugu extends baseIugu
     /**
      * Split
      *
-     * @return App\Iugu\Split
+     * @return \services\Iugu\Split
      */
     public function split()
     {
@@ -159,7 +159,7 @@ class Iugu extends baseIugu
     /**
      * Report
      *
-     * @return App\Iugu\Report
+     * @return \services\Iugu\Report
      */
     public function report()
     {
@@ -169,7 +169,7 @@ class Iugu extends baseIugu
     /**
      * Plan
      *
-     * @return App\Iugu\Plan
+     * @return \services\Iugu\Plan
      */
     public function plan()
     {
@@ -179,7 +179,7 @@ class Iugu extends baseIugu
     /**
      * Subscription
      *
-     * @return App\Iugu\Subscription
+     * @return \services\Iugu\Subscription
      */
     public function subscription()
     {
@@ -189,7 +189,7 @@ class Iugu extends baseIugu
     /**
      * Customer
      *
-     * @return App\Iugu\Customer
+     * @return \services\Iugu\Customer
      */
     public function customer()
     {

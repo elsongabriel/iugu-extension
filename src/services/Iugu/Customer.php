@@ -1,17 +1,25 @@
 <?php
 
-namespace gabrieljperez\Iugu;
+namespace services\Iugu;
 
+use bubbstore\Iugu\Iugu;
 use bubbstore\Iugu\Services\Customer as BaseCustomer;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Class Customer.
  *
- * @package namespace gabrieljperez\Iugu;
+ * @package namespace services\Iugu;
  */
 class Customer extends BaseCustomer
 {
-    public function __construct($http, $iugu)
+
+    /**
+     * Customer constructor.
+     * @param ClientInterface $http
+     * @param Iugu $iugu
+     */
+    public function __construct(ClientInterface $http, Iugu $iugu)
     {
         parent::__construct($http, $iugu);
     }
@@ -21,6 +29,8 @@ class Customer extends BaseCustomer
      *
      * @param array $params
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function createPaymentToken(array $params)
     {

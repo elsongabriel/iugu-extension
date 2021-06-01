@@ -1,28 +1,38 @@
 <?php
 
-namespace gabrieljperez\Iugu;
+namespace services\Iugu;
 
+use bubbstore\Iugu\Iugu;
 use bubbstore\Iugu\Services\BaseRequest;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Class Split.
  *
- * @package namespace gabrieljperez\Iugu;
+ * @package namespace services\Iugu;
  */
 class Split extends BaseRequest
 {
-    public function __construct($http, $iugu)
+
+    /**
+     * Split constructor.
+     * @param ClientInterface $http
+     * @param Iugu $iugu
+     */
+    public function __construct(ClientInterface $http, Iugu $iugu)
     {
         parent::__construct($http, $iugu);
     }
 
     /**
-     * Permite a criação de multi splits para uma conta. 
-     * Criar um novo multi split sobrepõe o que já está configurado. 
+     * Permite a criação de multi splits para uma conta.
+     * Criar um novo multi split sobrepõe o que já está configurado.
      * Todas as faturas pagas em uma conta irão respeitar as regras de splits criadas
      *
-     * @param array $params 
-     * @return array 
+     * @param array $params
+     * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function create(array $params)
     {
@@ -35,6 +45,8 @@ class Split extends BaseRequest
      * Consulta a lista de splits da conta.
      *
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function list()
     {
@@ -46,8 +58,10 @@ class Split extends BaseRequest
     /**
      * Consulta um splits da conta.
      *
-     * @param  string $id
+     * @param string $id
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function search($id)
     {
@@ -60,6 +74,8 @@ class Split extends BaseRequest
      * Consulta o split atualmente cadastrado na conta.
      *
      * @return array
+     * @throws \bubbstore\Iugu\Exceptions\IuguException
+     * @throws \bubbstore\Iugu\Exceptions\IuguValidationException
      */
     public function current()
     {
