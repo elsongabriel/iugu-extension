@@ -34,5 +34,5 @@
       "homepage": "https://egcservices.com.br"
     }
   ],
-  "minimum-stability": "dev"
+  "minimum-stability": "stable"
 }
